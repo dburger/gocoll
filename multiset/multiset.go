@@ -1,4 +1,4 @@
-package collections
+package gocoll
 
 type MultiSet[T comparable] struct {
 	counts map[T]int

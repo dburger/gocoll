@@ -1,4 +1,4 @@
-package collections
+package gocoll
 
 type dequeNode[T any] struct {
 	val  T
