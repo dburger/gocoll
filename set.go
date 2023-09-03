@@ -20,6 +20,12 @@ func (s *Set[T]) Add(i T) bool {
 	return ok
 }
 
+func (s *Set[T]) AddAll(items ...T) {
+	for _, i := range items {
+		s.Add(i)
+	}
+}
+
 func (s *Set[T]) Remove(i T) bool {
 	_, ok := s.items[i]
 	if ok {
