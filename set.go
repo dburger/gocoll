@@ -8,6 +8,7 @@ func NewSet[T comparable]() Set[T] {
 	return Set[T]{make(map[T]bool)}
 }
 
+// TODO(dburger): test.
 func (s *Set[T]) Contains(i T) bool {
 	_, ok := s.items[i]
 	return ok
@@ -27,6 +28,7 @@ func (s *Set[T]) Remove(i T) bool {
 	return ok
 }
 
+// TODO(dburger): test.
 func (s *Set[T]) Size() int {
 	return len(s.items)
 }

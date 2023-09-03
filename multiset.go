@@ -19,6 +19,7 @@ func (ms *MultiSet[T]) Add(val T) int {
 	return count
 }
 
+// TODO(dburger): test.
 func (ms *MultiSet[T]) Remove(val T) int {
 	count, ok := ms.counts[val]
 	if !ok || count == 1 {
@@ -30,6 +31,7 @@ func (ms *MultiSet[T]) Remove(val T) int {
 	return count
 }
 
+// TODO(dburger): test.
 func (ms *MultiSet[T]) Count(val T) int {
 	count, ok := ms.counts[val]
 	if !ok {

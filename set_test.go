@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestAdd(t *testing.T) {
+func TestSet_Add(t *testing.T) {
 	s := NewSet[int]()
 	s.Add(1)
 	assert.Equal(t, 1, s.Size())
@@ -33,7 +33,7 @@ func TestAdd(t *testing.T) {
 	assert.True(t, s.Contains(3))
 }
 
-func TestRemove(t *testing.T) {
+func TestSet_Remove(t *testing.T) {
 	s := NewSet[int]()
 	assert.Equal(t, 0, s.Size())
 	s.Add(1)
