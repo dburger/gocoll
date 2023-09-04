@@ -1,4 +1,4 @@
-module github.com/dburger/golang-collections
+module github.com/dburger/gocoll
 
 go 1.20
 
