@@ -1,4 +1,3 @@
-# golang collections
+# Go Collections
 
-Repository for investigating the writing of simple golang collections
-and collection helpers.
+Simple collections and collection helpers written in golang.
