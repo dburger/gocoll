@@ -6,12 +6,14 @@ type dequeNode[T any] struct {
 	next *dequeNode[T]
 }
 
+// Deque is a double ended queue data structure.
 type Deque[T any] struct {
 	head *dequeNode[T]
 	tail *dequeNode[T]
 	size int
 }
 
+// NewDeque constructs a new Deque of the given type.
 func NewDeque[T any]() Deque[T] {
 	head := dequeNode[T]{}
 	tail := dequeNode[T]{}
@@ -20,6 +22,7 @@ func NewDeque[T any]() Deque[T] {
 	return Deque[T]{&head, &tail, 0}
 }
 
+// AddFirst adds an element to the head of the Deque.
 func (d *Deque[T]) AddFirst(val T) {
 	n := dequeNode[T]{val, d.head, d.head.next}
 	d.head.next.prev = &n
@@ -27,6 +30,7 @@ func (d *Deque[T]) AddFirst(val T) {
 	d.size++
 }
 
+// AddLast adds an element to the tail of the Deque.
 func (d *Deque[T]) AddLast(val T) {
 	n := dequeNode[T]{val, d.tail.prev, d.tail}
 	d.tail.prev.next = &n
@@ -34,6 +38,8 @@ func (d *Deque[T]) AddLast(val T) {
 	d.size++
 }
 
+// RemoveFirst removes and returns the head of the Deque.
+// If the Deque is empty, a zero element and false is returned.
 func (d *Deque[T]) RemoveFirst() (T, bool) {
 	if d.size == 0 {
 		return *new(T), false
@@ -45,6 +51,8 @@ func (d *Deque[T]) RemoveFirst() (T, bool) {
 	return val, true
 }
 
+// RemoveLast removes and returns the tail of the Deque.
+// If the Deque is empty, a zero element and false is returned.
 func (d *Deque[T]) RemoveLast() (T, bool) {
 	if d.size == 0 {
 		return *new(T), false
@@ -56,6 +64,8 @@ func (d *Deque[T]) RemoveLast() (T, bool) {
 	return val, true
 }
 
+// PeekFirst returns the head of the Deque.
+// If the Deque is empty, a zero element and false is returned.
 func (d *Deque[T]) PeekFirst() (T, bool) {
 	if d.size == 0 {
 		return *new(T), false
@@ -63,6 +73,8 @@ func (d *Deque[T]) PeekFirst() (T, bool) {
 	return d.head.next.val, true
 }
 
+// PeekLast returns the head of the Deque.
+// If the Deque is empty, a zero element and false is returned.
 func (d *Deque[T]) PeekLast() (T, bool) {
 	if d.size == 0 {
 		return *new(T), false
@@ -70,14 +82,17 @@ func (d *Deque[T]) PeekLast() (T, bool) {
 	return d.tail.prev.val, true
 }
 
+// Size returns the number of elements in the Deque.
 func (d *Deque[T]) Size() int {
 	return d.size
 }
 
+// IsEmpty returns whether the Deque is empty.
 func (d *Deque[T]) IsEmpty() bool {
 	return d.size == 0
 }
 
+// Visit executes func f on every element of the Deque.
 func (d *Deque[T]) Visit(f func(T)) {
 	n := d.head.next
 	for n != d.tail {
