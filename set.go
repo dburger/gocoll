@@ -11,7 +11,6 @@ func NewSet[T comparable]() Set[T] {
 }
 
 // Contains returns whether the Set contains the indicated item.
-// TODO(dburger): test.
 func (s *Set[T]) Contains(i T) bool {
 	_, ok := s.items[i]
 	return ok
@@ -43,7 +42,6 @@ func (s *Set[T]) Remove(i T) bool {
 }
 
 // Size returns a count of the items in the Set.
-// TODO(dburger): test.
 func (s *Set[T]) Size() int {
 	return len(s.items)
 }
