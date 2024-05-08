@@ -45,3 +45,8 @@ func (s *Set[T]) Remove(i T) bool {
 func (s *Set[T]) Size() int {
 	return len(s.items)
 }
+
+// Slice returns the contents of the set as a slice.
+func (s *Set[T]) Slice() []T {
+	return MapKeys(s.items)
+}

@@ -104,3 +104,29 @@ func TestSet_Size(t *testing.T) {
 	s.Add(3)
 	assert.Equal(t, 3, s.Size())
 }
+
+func TestSet_Slice(t *testing.T) {
+	s := NewSet[int]()
+
+	assert.Equal(t, 0, len(s.Slice()))
+
+	s.Add(1)
+	slice := s.Slice()
+	assert.Equal(t, 1, len(slice))
+	assert.Equal(t, 1, slice[0])
+
+	s.Add(2)
+	slice = s.Slice()
+	assert.Equal(t, 2, len(slice))
+	assert.Contains(t, slice, 1, 2)
+
+	s.Add(2)
+	slice = s.Slice()
+	assert.Equal(t, 2, len(slice))
+	assert.Contains(t, slice, 1, 2)
+
+	s.Add(3)
+	slice = s.Slice()
+	assert.Equal(t, 3, len(slice))
+	assert.Contains(t, slice, 1, 2, 3)
+}
