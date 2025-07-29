@@ -39,3 +39,25 @@ func MapValues[T comparable, U any](m map[T]U) []U {
 	}
 	return values
 }
+
+// Merge combines multiple maps into a new map. Values from later maps
+// will overwrite values from earlier maps with the same key.
+func Merge[K comparable, V any](maps ...map[K]V) map[K]V {
+	res := make(map[K]V)
+	for _, m := range maps {
+		for k, v := range m {
+			res[k] = v
+		}
+	}
+	return res
+}
+
+// MergeInto merges multiple maps into the destination map. Values from later maps
+// will overwrite values from earlier maps with the same key.
+func MergeInto[K comparable, V any](dest map[K]V, maps ...map[K]V) {
+	for _, m := range maps {
+		for k, v := range m {
+			dest[k] = v
+		}
+	}
+}
