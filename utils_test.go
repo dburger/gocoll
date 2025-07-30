@@ -11,6 +11,13 @@ var SAMPLE_MAP = map[string]string{
 	"key3": "value3",
 }
 
+func TestFilter(t *testing.T) {
+	input := []int{0, 1, 2, 3, 4, 5, 6}
+	filtered := Filter(input, func(i int) bool { return i%2 == 0 })
+	expected := []int{0, 2, 4, 6}
+	assert.Equal(t, expected, filtered)
+}
+
 func TestRepeatFunc(t *testing.T) {
 	expected := []int{42, 42, 42, 42, 42, 42}
 	fortyTwos := RepeatFunc(func() int { return 42 }, 6)

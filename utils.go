@@ -2,6 +2,16 @@ package gocoll
 
 // Supposedly slices.Repeat coming in 1.23.
 
+func Filter[T any](slice []T, f func(T) bool) []T {
+	var res []T
+	for _, v := range slice {
+		if f(v) {
+			res = append(res, v)
+		}
+	}
+	return res
+}
+
 // RepeatFunc returns a slice of the given length with elements computed by a function.
 func RepeatFunc[T any](f func() T, n int) []T {
 	var res = make([]T, n)
