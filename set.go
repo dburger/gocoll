@@ -6,8 +6,10 @@ type Set[T comparable] struct {
 }
 
 // NewSet constructs and returns a set of the given type.
-func NewSet[T comparable]() Set[T] {
-	return Set[T]{make(map[T]bool)}
+func NewSet[T comparable](items ...T) Set[T] {
+	s := Set[T]{make(map[T]bool)}
+	s.AddAll(items...)
+	return s
 }
 
 // Contains returns whether the Set contains the indicated item.
