@@ -2,12 +2,14 @@ package gocoll
 
 // Set provides a set type.
 type Set[T comparable] struct {
-	items map[T]bool
+	// Idiomatic approach, struct{} does not require an allocation
+	// and communicates no meaning.
+	items map[T]struct{}
 }
 
 // NewSet constructs and returns a set of the given type.
 func NewSet[T comparable](items ...T) Set[T] {
-	s := Set[T]{make(map[T]bool)}
+	s := Set[T]{make(map[T]struct{})}
 	s.AddAll(items...)
 	return s
 }
@@ -22,7 +24,7 @@ func (s *Set[T]) Contains(i T) bool {
 // If the item was already present, false is returned.
 func (s *Set[T]) Add(i T) bool {
 	_, ok := s.items[i]
-	s.items[i] = true
+	s.items[i] = struct{}{}
 	return !ok
 }
 
